@@ -23,7 +23,7 @@ y <- train.data$X1
 set.seed(1) 
 cv1 <- cv.glmnet(x, y, alpha = 1, family = "binomial")
 
-#lasso regression
+# lasso regression
 model1 <- glmnet(x, y, alpha = 1, lambda = cv1$lambda.min,
                  family = "binomial")
 
@@ -39,12 +39,12 @@ RMSE(predicted.classes1,test.data$X1)
 AUC(predicted.classes1, test.data$X1)
 F1_Score(predicted.classes1, test.data$X1)
 
-# Fit the lasso penalized regression model
+# Fit the ridge penalized regression model
 # Find the best lambda using cross-validation
 set.seed(1) 
 cv2 <- cv.glmnet(x, y, alpha = 0, family = "binomial")
 
-#lasso regression
+# ridge regression
 model2 <- glmnet(x, y, alpha = 0, lambda = cv2$lambda.min,
                  family = "binomial")
 
